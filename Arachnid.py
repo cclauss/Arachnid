@@ -78,45 +78,46 @@ def searchTree(dirPath, keys):
                 queries[str(path)] = matches  # ONLY SHOW PATHS WITH HITS
     return queries
 
-# WINDOW
-window = Tk()
-window.wm_title("Arachnid")
+if __name__ == "__main__":
+    # WINDOW
+    window = Tk()
+    window.wm_title("Arachnid")
 
-# FRAMES
-top = Frame(window)
-space1 = Frame(window, height=4)
-mid = Frame(window)
-space2 = Frame(window, height=4)
-bottom = Frame(window)
+    # FRAMES
+    top = Frame(window)
+    space1 = Frame(window, height=4)
+    mid = Frame(window)
+    space2 = Frame(window, height=4)
+    bottom = Frame(window)
 
-# WIDGETS
-keyLbl = Label(top, text="Keywords (separate w/ commas): ")
-keyNpt = Entry(top, bg="white", width=20)
+    # WIDGETS
+    keyLbl = Label(top, text="Keywords (separate w/ commas): ")
+    keyNpt = Entry(top, bg="white", width=20)
 
-dirLbl = Label(mid, text="Directory: ")
-dirNpt = Entry(mid, bg="white", width=20)
-go = Button(mid, command=main, text="Go")
+    dirLbl = Label(mid, text="Directory: ")
+    dirNpt = Entry(mid, bg="white", width=20)
+    go = Button(mid, command=main, text="Go")
 
-outputLbl = Label(bottom, text="Output: ")
-output = Label(bottom, text="[ Waiting for initial launch.... ]")
+    outputLbl = Label(bottom, text="Output: ")
+    output = Label(bottom, text="[ Waiting for initial launch.... ]")
 
-# WIDGET PACKING
-keyLbl.pack(side=LEFT)
-keyNpt.pack(side=RIGHT)
+    # WIDGET PACKING
+    keyLbl.pack(side=LEFT)
+    keyNpt.pack(side=RIGHT)
 
-dirLbl.pack(side=LEFT)
-go.pack(side=RIGHT)
-dirNpt.pack()
+    dirLbl.pack(side=LEFT)
+    go.pack(side=RIGHT)
+    dirNpt.pack()
 
-outputLbl.pack(side=LEFT)
-output.pack(side=RIGHT)
+    outputLbl.pack(side=LEFT)
+    output.pack(side=RIGHT)
 
-# FRAME PACKING
-top.pack()
-space1.pack()
-mid.pack()
-space2.pack()
-bottom.pack()
+    # FRAME PACKING
+    top.pack()
+    space1.pack()
+    mid.pack()
+    space2.pack()
+    bottom.pack()
 
-# REST
-window.mainloop()
+    # REST
+    window.mainloop()
