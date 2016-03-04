@@ -27,12 +27,8 @@ def main():
 
 def parseStrList(string):
     """PARSE string INPUT TO keys"""
-    items = []
-    while string.find(",") > -1:
-        c = string.find(",")
-        items.append(string[:c].strip())  # ADD PARSED KEY
-        string = string[c + 1:].strip()
-    items.append(string)
+    items = string.split(",")
+    items = [s.strip() for s in items]
     return items
 
 
