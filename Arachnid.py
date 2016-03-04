@@ -6,7 +6,8 @@ import tkMessageBox
 from Tkinter import *
 
 
-def main():  # RUNS MAIN METHOD
+def main():
+    """runs main method"""
     output["text"] = ""  # CLEAR output
     if len(keyNpt.get()) > 0:
         results = processResults(searchTree(
@@ -24,7 +25,8 @@ def main():  # RUNS MAIN METHOD
     return
 
 
-def parseStrList(string):  # PARSE string INPUT TO keys
+def parseStrList(string):
+    """PARSE string INPUT TO keys"""
     items = []
     while string.find(",") > -1:
         c = string.find(",")
@@ -34,7 +36,8 @@ def parseStrList(string):  # PARSE string INPUT TO keys
     return items
 
 
-def processResults(queries):  # SORT AND TABULATE queries
+def processResults(queries):
+    """SORT AND TABULATE queries"""
     data = ""
     queries = sorted(queries.items(), key=operator.itemgetter(1))
     results = ""
@@ -45,7 +48,8 @@ def processResults(queries):  # SORT AND TABULATE queries
     return results
 
 
-def searchFile(path, keys):  # return matches FOUND IN FILE AT path
+def searchFile(path, keys):
+    """return matches FOUND IN FILE AT path"""
     data, matches = "", 0
     # QUIT IF FILE AT path IS UNREADABLE
     if not (lambda path: os.access(path, os.R_OK))(path): return matches
@@ -59,7 +63,8 @@ def searchFile(path, keys):  # return matches FOUND IN FILE AT path
     return matches
 
 
-def searchTree(dirPath, keys):  # return queries
+def searchTree(dirPath, keys):
+    """return queries"""
     queries = {}
     if len(dirPath) == 0:
         dirPath = "./"  # SETS DEFAULT dirPath VALUE
