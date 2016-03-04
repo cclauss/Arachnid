@@ -7,11 +7,11 @@ from Tkinter import *
 
 
 def main():
-    """runs main method"""
+    """Main method. Bound to pressing 'go' button."""
     output["text"] = ""  # CLEAR output
     if len(keyNpt.get()) > 0:
         results = processResults(searchTree(
-            str(dirNpt.get()), parseStrList(str(keyNpt.get()))
+            dirNpt.get(), parseStrList(keyNpt.get())
         ))
 
         if len(results) > 0:
