@@ -62,7 +62,7 @@ def searchFile(path, keys):
 def searchTree(dirPath, keys):
     """return queries"""
     queries = {}
-    dirPath) == dirPath or "./"  # SETS DEFAULT dirPath VALUE
+    dirPath = dirPath or "./"  # SETS DEFAULT dirPath VALUE
     for root, directories, filenames in os.walk(dirPath):
         for f in filenames:
             if f == "Arachnid.py":
