@@ -9,12 +9,12 @@ from Tkinter import *
 def main():
     """Main method. Bound to pressing 'go' button."""
     output["text"] = ""  # CLEAR output
-    if len(keyNpt.get()) > 0:
+    if keyNpt.get():
         results = processResults(searchTree(
             dirNpt.get(), parseStrList(keyNpt.get())
         ))
 
-        if len(results) > 0:
+        if results:
             output["text"] = "[ Search complete. ]"
             # UPDATE OUTPUT WITH SEARCH RESULTS
             tkMessageBox.showinfo("Results", results)
@@ -62,8 +62,7 @@ def searchFile(path, keys):
 def searchTree(dirPath, keys):
     """return queries"""
     queries = {}
-    if len(dirPath) == 0:
-        dirPath = "./"  # SETS DEFAULT dirPath VALUE
+    dirPath) == dirPath or "./"  # SETS DEFAULT dirPath VALUE
     for root, directories, filenames in os.walk(dirPath):
         for f in filenames:
             if f == "Arachnid.py":
