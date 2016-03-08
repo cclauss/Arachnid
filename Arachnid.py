@@ -9,12 +9,12 @@ from Tkinter import *
 def main():
     """Main method. Bound to pressing 'go' button."""
     output["text"] = ""  # CLEAR output
-    if len(keyNpt.get()) > 0:
+    if keyNpt.get():
         results = processResults(searchTree(
             dirNpt.get(), parseStrList(keyNpt.get())
         ))
 
-        if len(results) > 0:
+        if results:
             output["text"] = "[ Search complete. ]"
             # UPDATE OUTPUT WITH SEARCH RESULTS
             tkMessageBox.showinfo("Results", results)
@@ -27,9 +27,7 @@ def main():
 
 def parseStrList(string):
     """PARSE string INPUT TO keys"""
-    items = string.split(",")
-    items = [s.strip() for s in items]
-    return items
+    return [s.strip() for s in string.split(",")]
 
 
 def processResults(queries):
@@ -46,12 +44,12 @@ def processResults(queries):
 
 def searchFile(path, keys):
     """return matches FOUND IN FILE AT path"""
-    data, matches = "", 0
+    matches = 0
     # QUIT IF FILE AT path IS UNREADABLE
-    if not (lambda path: os.access(path, os.R_OK))(path): return matches
+    if not (lambda path: os.access(path, os.R_OK))(path):
+        return matches
     with open(path, "r") as f:
-        for l in f.readlines():
-            data += l  # GET ALL LINES IN f
+        data = ''.join(f.readlines())
     for k in keys:
         while data.find(k) > -1:
             # UPDATE VALUES
@@ -62,8 +60,7 @@ def searchFile(path, keys):
 def searchTree(dirPath, keys):
     """return queries"""
     queries = {}
-    if len(dirPath) == 0:
-        dirPath = "./"  # SETS DEFAULT dirPath VALUE
+    dirPath = dirPath or "./"  # SETS DEFAULT dirPath VALUE
     for root, directories, filenames in os.walk(dirPath):
         for f in filenames:
             if f == "Arachnid.py":
@@ -109,11 +106,8 @@ if __name__ == "__main__":
     output.pack(side=RIGHT)
 
     # FRAME PACKING
-    top.pack()
-    space1.pack()
-    mid.pack()
-    space2.pack()
-    bottom.pack()
+    for f in (top, space1, mid, space2, bottom):
+        f.pack()
 
     # REST
     window.mainloop()
